@@ -1,68 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DAM WIN Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DAM WIN - Home</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    .container {
-      max-width: 400px;
-      margin: 80px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,255,0.1);
-    }
-    h2 {
+
+    .header {
+      background: #0047ab;
+      color: white;
+      padding: 20px;
       text-align: center;
-      color: #0047ab;
+      font-size: 30px;
+      font-weight: bold;
     }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 16px;
+
+    .games {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
     }
-    button {
+
+    .game-button {
+      width: 80%;
+      max-width: 300px;
+      padding: 15px;
       background: #0047ab;
       color: white;
       border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
-    button:hover {
+
+    .game-button:hover {
       background: #003080;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      background: white;
+      border-top: 1px solid #ccc;
+    }
+
+    .bottom-nav div {
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
+      color: #0047ab;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .bottom-nav div:hover {
+      background: #e6f0ff;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>DAM WIN Login</h2>
-    <form onsubmit="login(event)">
-      <input type="tel" id="phone" placeholder="Phone Number" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
+
+  <div class="header">DAM WIN</div>
+
+  <div class="games">
+    <button class="game-button" onclick="location.href='wingo30.html'">30 Sec Wingo</button>
+    <button class="game-button" onclick="location.href='wingo60.html'">1 Min Wingo</button>
+    
   </div>
 
-  <script>
-    function login(e) {
-      e.preventDefault();
-      const phone = document.getElementById("phone").value;
-      const password = document.getElementById("password").value;
+  <div class="bottom-nav">
+    <a href="home.html">
+  <button style="padding: 10px 20px; background: #1e88e5; color: white; border: none; border-radius: 6px;">
+    Home
+  </button>
+</a>
 
-      // Simulate login success and redirect
-      if (phone.length === 10 && password.length >= 4) {
-        window.location.href = "hoome.html";
-      } else {
-        alert("Invalid phone number or password.");
-      }
-    }
-  </script>
+    <a href="activity.html">
+  <button style="padding: 10px 20px; font-weight: bold; background: #673ab7; color: white; border: none; border-radius: 5px;">
+    activity
+  </button>
+</a>
+
+  
+    <a href="wallet.html">
+  <button style="padding: 10px 20px; background: #1e88e5; color: white; border: none; border-radius: 6px;">
+    Wallet
+  </button>
+</a> 
+    <a href="profile.html">
+  <button style="padding: 10px 20px; background: #1e88e5; color: white; border: none; border-radius: 6px;">
+    Profile
+  </button>
+</a>
+
+
+  </div>
+
 </body>
-</html>
+</html> 
+
