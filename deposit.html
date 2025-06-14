@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deposit - DAM WIN</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f0f4ff;
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .section {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .options button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background: #4caf50;
+      color: white;
+    }
+    .upi-info {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #d32f2f;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .submit-btn {
+      background: #f44336;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Deposit to DAM WIN Wallet</h2>
+
+  <div class="section">
+    <label><strong>Select Amount</strong></label>
+    <div class="options">
+      <button onclick="selectAmount(100)">₹100</button>
+      <button onclick="selectAmount(200)">₹200</button>
+      <button onclick="selectAmount(300)">₹300</button>
+      <button onclick="selectAmount(500)">₹500</button>
+      <button onclick="selectAmount(1000)">₹1000</button>
+      <button onclick="selectAmount(1500)">₹1500</button>
+      <button onclick="selectAmount(2000)">₹2000</button>
+    </div>
+    <input type="text" id="amount" placeholder="Or enter custom amount" />
+  </div>
+
+  <div class="section">
+    <label><strong>Select Payment Method</strong></label>
+    <select id="paymentMethod" onchange="updateUpiId()">
+      <option value="">-- Select --</option>
+      <option value="googlepay">Google Pay</option>
+      <option value="phonepe">PhonePe</option>
+      <option value="fampay">Fampay</option>
+      <option value="paytm">Paytm</option>
+    </select>
+    <div class="upi-info" id="upiDisplay"></div>
+  </div>
+
+  <div class="section">
+    <label><strong>Enter UTR/Transaction ID</strong></label>
+    <input type="text" placeholder="Enter UTR Number" />
+
+    <label><strong>Upload Screenshot of Payment</strong></label>
+    <input type="file" accept="image/*" />
+
+    <button class="submit-btn">Submit Payment</button>
+  </div>
+
+  <script>
+    function selectAmount(value) {
+      document.getElementById("amount").value = value;
+    }
+
+    function updateUpiId() {
+      const method = document.getElementById("paymentMethod").value;
+      let upiId = "";
+
+      if (method === "googlepay") {
+        upiId = "ansariboy182507@okasix";
+      } else if (method === "phonepe") {
+        upiId = "8623814453@ibl";
+      } else if (method === "fampay") {
+        upiId = "8623814453@fam";
+      } else if (method === "paytm") {
+        upiId = "example@paytm"; // Replace with real ID if available
+      }
+
+      document.getElementById("upiDisplay").textContent = upiId ? `Pay to UPI: ${upiId}` : "";
+    }
+  </script>
+</body>
+</html>

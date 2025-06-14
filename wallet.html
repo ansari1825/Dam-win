@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wallet - DAM WIN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eaf1ff;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h2 {
+      text-align: center;
+      color: #0d47a1;
+    }
+    .wallet-section {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    .balance {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #1565c0;
+      margin-bottom: 30px;
+    }
+    .wallet-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    .wallet-actions button {
+      width: 48%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #1e88e5;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .transactions {
+      margin-top: 20px;
+    }
+    .transaction-item {
+      background: #f0f4ff;
+      padding: 10px;
+      border-left: 4px solid #2196f3;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .transaction-item span {
+      display: block;
+      font-size: 14px;
+    }
+    .label {
+      font-weight: bold;
+      color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>My Wallet</h2>
+
+  <div class="wallet-section">
+    <div class="balance">
+      Total Balance: ₹1,200
+    </div>
+
+    <div class="wallet-actions">
+      <button onclick="window.location.href='deposit.html'">Deposit</button>
+      <button onclick="window.location.href='withdraw.html'">Withdraw</button>
+    </div>
+
+    <div class="transactions">
+      <h3>🧾 Betting Transactions</h3>
+
+      <div class="transaction-item">
+        <span class="label">Game:</span> Wingo 1 Min
+        <span class="label">Type:</span> Red
+        <span class="label">Amount:</span> ₹100
+        <span class="label">Result:</span> Win
+        <span class="label">Profit/Loss:</span> +₹90
+      </div>
+
+      <div class="transaction-item">
+        <span class="label">Game:</span> Wingo 30s
+        <span class="label">Type:</span> Green
+        <span class="label">Amount:</span> ₹50
+        <span class="label">Result:</span> Loss
+        <span class="label">Profit/Loss:</span> -₹50
+      </div>
+
+      <!-- More transaction entries can be added here -->
+    </div>
+  </div>
+
+</body>
+</html>

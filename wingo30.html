@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wingo 30s - DAM WIN</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fefefe;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: #f44c4c;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+    .wallet {
+      background: #fff0f0;
+      text-align: center;
+      padding: 1rem;
+    }
+    .wallet-buttons button {
+      padding: 0.7rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+    .withdraw { background: #ff9800; }
+    .deposit { background: #2196f3; }
+    .game-tabs {
+      display: flex;
+      justify-content: space-around;
+      background: #fff;
+      padding: 1rem 0;
+    }
+    .game-tabs button {
+      border: none;
+      padding: 0.5rem 1rem;
+      background: #ddd;
+      border-radius: 5px;
+    }
+    .active-tab {
+      background: #f44c4c;
+      color: white;
+    }
+    .countdown-section {
+      background: #fcdede;
+      padding: 1rem;
+      text-align: center;
+    }
+    .countdown-section .timer {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .betting-section {
+      padding: 1rem;
+      text-align: center;
+    }
+    .colors button,
+    .numbers button,
+    .bigsmall button {
+      padding: 1rem;
+      margin: 0.3rem;
+      border: none;
+      border-radius: 50%;
+      font-size: 1rem;
+      font-weight: bold;
+      width: 50px;
+      height: 50px;
+    }
+    .green { background: #4caf50; color: white; }
+    .red { background: #f44336; color: white; }
+    .violet { background: #9c27b0; color: white; }
+    .big, .small {
+      width: 80px;
+      height: 40px;
+      border-radius: 10px;
+    }
+    .history {
+      padding: 1rem;
+    }
+    .history table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .history th, .history td {
+      padding: 0.5rem;
+      border-bottom: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">DAM WIN - Wingo 30s</div>
+  <div class="wallet">
+    <div>Wallet Balance: ₹0.00</div>
+    <div class="wallet-buttons">
+      <a href="withdraw.html"><button class="withdraw">Withdraw</button></a>
+      <a href="deposit.html"><button class="deposit">Deposit</button></a>
+    </div>
+  </div>
+
+  <div class="game-tabs">
+    <button class="active-tab">Wingo 30s</button>
+  </div>
+
+  <div class="countdown-section">
+    <div>Period ID: <span id="period">Loading...</span></div>
+    <div class="timer" id="timer">00:30</div>
+  </div>
+
+  <div class="betting-section">
+    <div class="colors">
+      <button class="green">Green</button>
+      <button class="violet">Violet</button>
+      <button class="red">Red</button>
+    </div>
+
+    <div class="numbers">
+      <button>0</button><button>1</button><button>2</button><button>3</button><button>4</button>
+      <button>5</button><button>6</button><button>7</button><button>8</button><button>9</button>
+    </div>
+
+    <div class="bigsmall">
+      <button class="big">Big</button>
+      <button class="small">Small</button>
+    </div>
+  </div>
+
+  <div class="history">
+    <h3>Game History</h3>
+    <table>
+      <tr><th>Period</th><th>Number</th><th>Big/Small</th><th>Color</th></tr>
+      <tr><td>20250614100050001</td><td>6</td><td>Big</td><td><span class="red">●</span></td></tr>
+      <tr><td>20250614100050000</td><td>3</td><td>Small</td><td><span class="green">●</span></td></tr>
+    </table>
+  </div>
+
+  <script>
+    function updateWingoTimer() {
+      const now = new Date();
+      const ISTOffset = 5.5 * 60 * 60 * 1000;
+      const istTime = new Date(now.getTime() + ISTOffset);
+
+      const seconds = istTime.getSeconds();
+      const remaining = 30 - (seconds % 30);
+
+      // Update timer display
+      document.getElementById("timer").textContent = `00:${remaining < 10 ? '0' + remaining : remaining}`;
+
+      // Generate period ID: YYYYMMDDHHMM + rounded to 30s (00 or 30)
+      const yyyy = istTime.getFullYear();
+      const mm = String(istTime.getMonth() + 1).padStart(2, '0');
+      const dd = String(istTime.getDate()).padStart(2, '0');
+      const hh = String(istTime.getHours()).padStart(2, '0');
+      const mi = String(istTime.getMinutes()).padStart(2, '0');
+      const ss = seconds < 30 ? '00' : '30';
+      const periodId = `${yyyy}${mm}${dd}${hh}${mi}${ss}`;
+      document.getElementById("period").textContent = periodId;
+    }
+
+    setInterval(updateWingoTimer, 1000);
+    updateWingoTimer();
+  </script>
+</body>
+</html>

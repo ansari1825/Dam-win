@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Activity - DAM WIN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .section {
+      background: white;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .section h3 {
+      margin-top: 0;
+      color: #444;
+    }
+    .bonus {
+      color: #2196f3;
+      font-style: italic;
+    }
+    .success {
+      color: green;
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      background: #4caf50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .news-item {
+      background: #e3f2fd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-left: 5px solid #2196f3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Activity Center</h2>
+
+  <div class="section">
+    <h3>🎁 Gift Code Redemption</h3>
+    <input type="text" placeholder="Enter Gift Code" />
+    <button class="btn">Redeem</button>
+  </div>
+
+  <div class="section">
+    <h3>💰 First Deposit Bonus</h3>
+    <p class="bonus">You received ₹150 bonus on your first deposit of ₹500.</p>
+    <p>Status: <span class="success">Credited</span></p>
+  </div>
+
+  <div class="section">
+    <h3>👥 Refer & Earn</h3>
+    <p>Invite your friends using your referral link and earn ₹30 per user after their first deposit.</p>
+    <input type="text" readonly value="https://damwin.com/ref?id=12345" />
+    <button class="btn" onclick="navigator.clipboard.writeText('https://damwin.com/ref?id=12345')">Copy Link</button>
+  </div>
+
+  <div class="section">
+    <h3>📰 Daily News</h3>
+    <div class="news-item">
+      📢 Bonus increased on 1st deposit. Now get ₹150 on ₹500 deposit.
+    </div>
+    <div class="news-item">
+      🔒 Withdrawals above ₹110 only. Processed within 30 Minutes
+    </div>
+    <div class="news-item">
+      💡 New game "Wingo 30s" launching tonight at 10:00 PM.
+    </div>
+  </div>
+
+</body>
+</html> 

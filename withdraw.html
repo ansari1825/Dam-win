@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Withdraw - DAM WIN</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      padding: 20px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      background: white;
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .btn {
+      background: #e91e63;
+      color: white;
+      padding: 12px;
+      border: none;
+      width: 100%;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .warning {
+      color: red;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Withdraw to Bank/UPI</h2>
+  <div class="container">
+    <div class="warning">Minimum ₹110 required to withdraw</div>
+    <input type="text" id="bankName" placeholder="Bank Name" required />
+    <input type="text" id="accountNumber" placeholder="Bank Account Number" required />
+    <input type="text" id="upiId" placeholder="UPI ID" required />
+    <input type="text" id="ifscCode" placeholder="IFSC Code" required />
+    <input type="number" id="amount" placeholder="Enter amount (Min ₹110)" required />
+
+    <button class="btn" onclick="submitWithdraw()">Submit Withdrawal</button>
+  </div>
+
+  <script>
+    function submitWithdraw() {
+      const amount = parseInt(document.getElementById("amount").value);
+      if (isNaN(amount) || amount < 110) {
+        alert("Minimum ₹110 required to withdraw.");
+        return;
+      }
+
+      // You can connect this to a PHP backend or save to a database
+      alert("Withdrawal request submitted. Please wait for admin approval.");
+    }
+  </script>
+
+</body>
+</html>
