@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DAM WIN - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      background: #0047ab;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .games {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .game-button {
+      width: 80%;
+      max-width: 300px;
+      padding: 15px;
+      background: #0047ab;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .game-button:hover {
+      background: #003080;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      background: white;
+      border-top: 1px solid #ccc;
+    }
+
+    .bottom-nav div {
+      flex: 1;
+      text-align: center;
+      padding: 12px 0;
+      color: #0047ab;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .bottom-nav div:hover {
+      background: #e6f0ff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">DAM WIN</div>
+
+  <div class="games">
+    <button class="game-button" onclick="location.href='wingo30.html'">30 Sec Wingo</button>
+    <button class="game-button" onclick="location.href='wingo60.html'">1 Min Wingo</button>
+    
+  </div>
+
+  <div class="bottom-nav">
+    <a href="home.html">
+  <button style="padding: 10px 20px; background: #1e88e5; color: white; border: none; border-radius: 6px;">
+    Home
+  </button>
+</a>
+
+    <a href="activity.html">
+  <button style="padding: 10px 20px; font-weight: bold; background: #673ab7; color: white; border: none; border-radius: 5px;">
+    activity
+  </button>
+</a>
+
+  
+    <a href="wallet.html">
+  <button style="padding: 10px 20px; background: #1e88e5; color: white; border: none; border-radius: 6px;">
+    Wallet
+  </button>
+</a> 
+    <a href="profile.html">
+  <button style="padding: 10px 20px; background: #1e88e5; color: white; border: none; border-radius: 6px;">
+    Profile
+  </button>
+</a>
+
+
+  </div>
+
+</body>
+</html> 
+
