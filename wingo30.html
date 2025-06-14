@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wingo 30 Sec</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f8ff;
+      color: #0a0a0a;
+    }
+
+    .header {
+      background: linear-gradient(to right, #007bff, #00bcd4);
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .wallet {
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .wallet p {
+      margin: 5px;
+      font-size: 16px;
+    }
+
+    .wallet .buttons button {
+      padding: 10px 18px;
+      margin: 6px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .wallet .withdraw {
+      background-color: #dc3545;
+    }
+
+    .wallet .deposit {
+      background-color: #28a745;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      background: #e9f1fb;
+      padding: 10px 0;
+    }
+
+    .tabs div {
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-weight: bold;
+      background: #d6e9ff;
+      color: #003366;
+    }
+
+    .tabs .active {
+      background: #007bff;
+      color: white;
+    }
+
+    .game-info {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+
+    .colors, .numbers, .bigsmall {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding: 0 10px;
+    }
+
+    .colors button, .bigsmall button, .numbers button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      min-width: 70px;
+    }
+
+    .colors button:nth-child(1) { background-color: #28a745; color: white; }
+    .colors button:nth-child(2) { background-color: #6f42c1; color: white; }
+    .colors button:nth-child(3) { background-color: #dc3545; color: white; }
+
+    .bigsmall button:nth-child(1) { background-color: #ff9800; color: white; }
+    .bigsmall button:nth-child(2) { background-color: #2196f3; color: white; }
+
+    .numbers button {
+      background-color: #e3f2fd;
+      color: #0d47a1;
+      border: 2px solid #bbdefb;
+    }
+
+    .numbers button:hover {
+      background-color: #bbdefb;
+    }
+
+    .history {
+      padding: 15px;
+    }
+
+    .history table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+    }
+
+    .history th, .history td {
+      border: 1px solid #b0bec5;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .history th {
+      background-color: #e3f2fd;
+    }
+
+    .green-result {
+      color: green;
+    }
+
+    .red-result {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">DAM WIN - Wingo 30 Sec</div>
+
+  <div class="wallet">
+    <p><strong>₹0.00</strong></p>
+    <p>Wallet balance</p>
+    <div class="buttons">
+      <a href="withdraw.html"><button class="withdraw">Withdraw</button></a>
+      <a href="deposit.html"><button class="deposit">Deposit</button></a>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="active">Wingo 30 Sec</div>
+  </div>
+
+  <div class="game-info">
+    <h3>Wingo 30 Sec</h3>
+    <div id="countdown">Time Remaining: <span id="timer">30</span> sec</div>
+    <div>Period: <span id="period"></span></div>
+  </div>
+
+  <div class="colors">
+    <button onclick="placeBet('Green')">Green</button>
+    <button onclick="placeBet('Violet')">Violet</button>
+    <button onclick="placeBet('Red')">Red</button>
+  </div>
+
+  <div class="numbers">
+    <button onclick="placeBet('0')">0</button>
+    <button onclick="placeBet('1')">1</button>
+    <button onclick="placeBet('2')">2</button>
+    <button onclick="placeBet('3')">3</button>
+    <button onclick="placeBet('4')">4</button>
+    <button onclick="placeBet('5')">5</button>
+    <button onclick="placeBet('6')">6</button>
+    <button onclick="placeBet('7')">7</button>
+    <button onclick="placeBet('8')">8</button>
+    <button onclick="placeBet('9')">9</button>
+  </div>
+
+  <div class="bigsmall">
+    <button onclick="placeBet('Big')">Big</button>
+    <button onclick="placeBet('Small')">Small</button>
+  </div>
+
+  <div class="history">
+    <h3>Your Placed Bets</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Amount</th>
+          <th>Type</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="bet-table-body">
+        <tr><td>2506141530</td><td>₹5</td><td>Green</td><td class="green-result">Win</td></tr>
+        <tr><td>2506141529</td><td>₹2</td><td>Small</td><td class="red-result">Lose</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function getISTTime() {
+      const now = new Date();
+      const istOffset = 5.5 * 60 * 60 * 1000;
+      return new Date(now.getTime() + istOffset);
+    }
+
+    function getPeriodAndSecondsLeft() {
+      const ist = getISTTime();
+      const yy = String(ist.getFullYear()).slice(2);
+      const mm = String(ist.getMonth() + 1).padStart(2, '0');
+      const dd = String(ist.getDate()).padStart(2, '0');
+      const hh = String(ist.getHours()).padStart(2, '0');
+      const min = String(ist.getMinutes()).padStart(2, '0');
+      const sec = ist.getSeconds();
+      const periodSlot = Math.floor(sec / 30);
+      const remaining = 30 - (sec % 30);
+      const period = `${yy}${mm}${dd}${hh}${min}${periodSlot}`;
+      return { period, remaining };
+    }
+
+    function updateTimer() {
+      const { period, remaining } = getPeriodAndSecondsLeft();
+      document.getElementById('period').textContent = period;
+      document.getElementById('timer').textContent = remaining;
+    }
+
+    function placeBet(type) {
+      const amount = prompt(`Enter amount to bet on ${type} (₹1 - ₹10000):`);
+      if (amount === null) return;
+      const amt = parseInt(amount);
+      if (isNaN(amt) || amt < 1 || amt > 10000) {
+        alert("Invalid amount. Must be between ₹1 and ₹10000.");
+        return;
+      }
+
+      const period = document.getElementById("period").textContent;
+      const row = `
+        <tr>
+          <td>${period}</td>
+          <td>₹${amt}</td>
+          <td>${type}</td>
+          <td class="green-result">Pending</td>
+        </tr>
+      `;
+      document.getElementById("bet-table-body").insertAdjacentHTML("afterbegin", row);
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
+</body>
+</html>
